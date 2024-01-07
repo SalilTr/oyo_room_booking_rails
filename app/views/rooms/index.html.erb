@@ -1,0 +1,18 @@
+<%= form_tag(rooms_path, method: :get) do %>
+  <!-- <%= label_tag 'min_capacity', 'Minimum Capacity:' %>
+  <%= number_field_tag 'min_capacity', @min_capacity, min: 1 %> -->
+
+  <%= label_tag 'max_capacity', 'Maximum Capacity:' %>
+  <%= number_field_tag 'max_capacity', @max_capacity, min: 3 %>
+
+  <%= submit_tag 'Search Rooms' %>
+<% end %>
+
+<h2>Available Rooms for <%= @min_capacity %> to <%= @max_capacity %> Persons:</h2>
+<ul>
+  <% @rooms.each do |room| %>
+    <li>
+      <%= link_to "#{room.name} - Capacity: 3", room_path(room) %>
+    </li>
+  <% end %>
+</ul>

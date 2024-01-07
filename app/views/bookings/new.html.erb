@@ -1,0 +1,63 @@
+<%= form_with(model: @booking, local: true, url: room_bookings_path(@room)) do |form| %>
+  <div class="field">
+    <%= form.label :room_id, 'Room' %>
+    <%= form.collection_select :room_id, Room.all, :id, :name, prompt: 'Select a room' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkin_time, 'Checkin time' %>
+    <%= form.datetime_field :checkin_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkout_time, 'Checkout time' %>
+    <%= form.datetime_field :checkout_time %>
+  </div>
+
+  <div class="field" id="guest-details">
+    <%= form.label :guest_details, 'Guest Details' %>
+    <%= form.fields_for :guest_details do |guest_fields| %>
+      <div class="nested-fields">
+        <%= guest_fields.text_field :name, placeholder: 'Name' %>
+        <%= guest_fields.text_field :email, placeholder: 'Email' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="field" id="guest-details">
+    <%= form.label :guest_details, 'Guest Details' %>
+    <%= form.fields_for :guest_details do |guest_fields| %>
+      <div class="nested-fields">
+        <%= guest_fields.text_field :name, placeholder: 'Name' %>
+        <%= guest_fields.text_field :email, placeholder: 'Email' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="field" id="guest-details">
+    <%= form.label :guest_details, 'Guest Details' %>
+    <%= form.fields_for :guest_details do |guest_fields| %>
+      <div class="nested-fields">
+        <%= guest_fields.text_field :name, placeholder: 'Name' %>
+        <%= guest_fields.text_field :email, placeholder: 'Email' %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Add button for adding guests -->
+  <button type="button" id="add-guest">Add Guest</button>
+
+  <div class="actions">
+    <%= form.submit 'Create Booking' %>
+  </div>
+<% end %>
+
+<script>
+  $(document).on('turbolinks:load', function() {
+    $('#add-guest').click(function() {
+      var guestDetails = $('#guest-details');
+      var newGuestFields = guestDetails.find('.nested-fields:first').clone();
+      newGuestFields.find('input').val('');
+      guestDetails.append(newGuestFields);
+    });
+  });
+</script>
+  

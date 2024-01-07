@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_id: 1
+  guest_details: 
+  checkin_time: 2024-01-07 15:47:51
+  checkout_time: 2024-01-07 15:47:51
+  room: one
+
+two:
+  room_id: 1
+  guest_details: 
+  checkin_time: 2024-01-07 15:47:51
+  checkout_time: 2024-01-07 15:47:51
+  room: two

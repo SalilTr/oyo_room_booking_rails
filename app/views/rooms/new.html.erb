@@ -1,0 +1,31 @@
+<!-- app/views/rooms/new.html.erb -->
+
+<h1>New Room</h1>
+
+<%= form_with(model: @room, url: rooms_path, method: :post) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :capacity %>
+    <%= form.number_field :capacity, min: 1 %>
+  </div>
+
+  <div>
+    <%= form.label :max_capacity %>
+    <%= form.number_field :max_capacity, min: 1 %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price, min: 0.01, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.submit 'Create Room' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Rooms', rooms_path %>

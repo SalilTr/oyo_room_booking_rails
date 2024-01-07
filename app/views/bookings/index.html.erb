@@ -1,0 +1,25 @@
+<!-- app/views/bookings/index.html.erb -->
+<h1>Bookings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Room</th>
+      <th>Guest Name</th>
+      <th>Check-in Time</th>
+      <th>Check-out Time</th>
+      <!-- Add other columns as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.room.name %></td>
+        <td><%= booking.guest_details["name"] %></td>
+        <td><%= booking.checkin_time %></td>
+        <td><%= booking.checkout_time %></td>
+        <!-- Add other columns as needed -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
